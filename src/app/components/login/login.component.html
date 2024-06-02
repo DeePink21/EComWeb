@@ -1,0 +1,76 @@
+<app-header></app-header>
+<div class="container">
+  <form #loginForm="ngForm">
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <div class="login-form mx-auto">
+          <h2 class="login-header">Login</h2>
+          <div class="form-group">
+            <label for="phoneNumber">Phone Number</label>
+            <input
+              type="phone"
+              class="form-control"
+              required
+              [(ngModel)]="phoneNumber"
+              (input)="onPhoneNumberChange()"
+              name="phoneNumber"
+              (focus)="loginForm.form.markAsTouched()"
+              id="phoneNumber"
+            />
+            <div class="divider-nospace"></div>
+          </div>
+          <div class="mt-5"></div>
+          <div class="form-group password-field">
+            <label for="password">Password</label>
+            <input
+              type="password"
+              placeholder="At least 3 characters"
+              class="form-control"
+              required
+              id="password"
+              name="password"
+              [(ngModel)]="password"
+            />
+            <i class="password-toggle fas fa-eye-slash"></i>
+            <div class="divider-nospace"></div>
+          </div>
+
+          <div class="form-group">
+            <div class="form-check checkbox-text">
+              <span style="display: flex">
+                <input
+                  type="checkbox"
+                  name="remember"
+                  id="remember"
+                  [(ngModel)]="remember"
+                  class="form-check-input"
+                />
+                <label for="remember" class="form-check-label text-start"
+                  >Remember password?</label
+                >
+              </span>
+              <a href="#" class="register-link">Forget password</a>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <select class="form-control access-right">
+              <option value="" selected disabled>Role</option>
+              <option value="">User</option>
+              <option value="">Admin</option>
+            </select>
+          </div>
+
+          <button type="button" class="login-button"
+          (click)="onLogin()">Login</button>
+          <div class="divider"></div>
+          <p class="text-center">
+            Don't have an account?
+            <span> <a href="#" class="register-link">Register</a></span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+<app-footer></app-footer>
