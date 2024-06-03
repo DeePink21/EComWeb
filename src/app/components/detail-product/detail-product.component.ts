@@ -8,24 +8,29 @@ import { CategoryService } from '../../services/category.service';
 import { env } from '../../environments/environment';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { CommonModule } from '@angular/common';
+import { CartService } from '../../services/cart.service';
+import { NgxWebstorageModule } from 'ngx-webstorage';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-detail-product',
   standalone: true,
   templateUrl: './detail-product.component.html',
   styleUrl: './detail-product.component.scss',
-  imports: [HeaderComponent, FooterComponent, CarouselModule, CommonModule],
+  imports: [HeaderComponent, FooterComponent, CarouselModule, CommonModule, FormsModule  ],
 })
 export class DetailProductComponent implements OnInit {
   product?: Product;
   productId: number = 0;
   currentImageIndex: number = 0;
   imageBaseUrl = `${env.apiBaseUrl}/products/images/`;
+  quantity: number = 1;
   constructor(
     private route: Router,
     private activatedRouter: ActivatedRoute,
     private productService: ProductService,
-    private categoryService: CategoryService
+    private categoryService: CategoryService,
+    private cartService: CartService
   ) {}
 
   ngOnInit(): void {
@@ -50,6 +55,7 @@ export class DetailProductComponent implements OnInit {
           //   console.log(response.product_images);
           // }
           this.product = response;
+          console.log(response);
           this.showImage(0);
         },
         complete() {
@@ -92,4 +98,28 @@ export class DetailProductComponent implements OnInit {
   nextImage() {
     this.showImage(this.currentImageIndex + 1);
   }
+
+  // cart stuff
+  addToCart(): void {
+    if (this.product) {
+      this.cartService.addToCart(this.product.id, this.quantity);
+    } else {
+      console.error('Invalid product id: ', this.productId);
+    }
+  }
+
+  increaseQuantity(): void {
+    this.quantity++;
+  }
+
+  decreaseQuantity(): void {
+    if (this.quantity > 1) {
+      this.quantity--;
+    }
+  }
+
+  buyNow(): void {
+
+  }
+
 }

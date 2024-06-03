@@ -70,12 +70,12 @@
 
     <div class="col-md-6">
       <div class="product-details">
-        <h2 class="product-name">Laptop gaming</h2>
+        <h2 class="product-name">{{ product?.name }}</h2>
         <p class="product-description">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit.
+          {{product?.description}}
         </p>
         <p class="product-warranty">Bao hanh: 12 thang</p>
-        <p class="product-price">Gia: <del>$159</del> $199</p>
+        <p class="product-price">Gia: <del>$159</del> ${{product?.price}}</p>
         <div class="product-rating">
           <i class="fas fa-star"></i>
           <i class="fas fa-star"></i>
@@ -84,15 +84,14 @@
           <i class="fas fa-star-half-alt"></i>
         </div>
         <div class="product-actions">
-          <button class="btn btn-primary">Them vao gio hang</button>
-          <!-- <div class="space-x"></div> -->
-          <button class="btn btn-success">Mua ngay</button>
+          <button class="btn btn-primary" (click)="addToCart()">Add to Cart</button>
+          <button class="btn btn-success" (click)="buyNow()">Buy Now</button>
         </div>
         <div class="product-quantity">
           <div class="border-wrapper">
-            <button>-</button>
-            <input type="text" name="" id="" value="1" />
-            <button>+</button>
+            <button (click)="decreaseQuantity()">-</button>
+            <input type="text" name="quantity" id="quantity" [(ngModel)]="quantity" />
+            <button (click)="increaseQuantity()">+</button>
           </div>
         </div>
       </div>
