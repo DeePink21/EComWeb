@@ -9,7 +9,6 @@ import { env } from '../environments/environment';
 })
 export class ProductService {
   constructor(private httpClient: HttpClient) {}
-
   private apiGetProducts = `${env.apiBaseUrl}/products`;
 
   getProducts(
@@ -23,11 +22,19 @@ export class ProductService {
       .set('categoryId', categoryId?.toString() ?? '0')
       .set('page', page.toString())
       .set('size', size.toString());
-
     return this.httpClient.get<any[]>(this.apiGetProducts, { params });
   }
 
   getDetailProduct(id: number): Observable<Product> {
     return this.httpClient.get<Product>(`${this.apiGetProducts}/${id}`);
+  }
+
+  getProductsByIds(ids: number[]): Observable<Product[]> {
+    // const params = new HttpParams().set('ids', ids?.join(',') ?? '');
+    //  .set('ids', ids.map((id) => id.toString()).join(',')?? '');
+    const params = new HttpParams().set('ids', '1,2,3,4'); 
+    return this.httpClient.get<any[]>(`${this.apiGetProducts}/list`, {
+      params,
+    });
   }
 }

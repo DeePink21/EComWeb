@@ -1,50 +1,79 @@
 <app-header></app-header>
 <div class="container">
-    <div class="confirmation-container">
-        <h1>Confirmed order</h1>
-        <p>Thank you for order! Below is your order details</p>
+  <div class="confirmation-container">
+    <h1>Confirmed order</h1>
+    <p>Thank you for order! Below is your order details</p>
+  </div>
+  <div class="row">
+    <div>
+      <table>
+        <thead>
+          <tr>
+            <th scope="col" class="text-start">Product</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Price</th>
+            <th scope="col">Total Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          <ng-container *ngFor="let item of cartItems">
+            <tr>
+              <td>
+                <div class="product-info">
+                  <img
+                    [src]="
+                      item.product.thumbnail && item.product.thumbnail !== 'link' 
+                        ? baseImageUrl + item.product.thumbnail
+                        : defaultUrl
+                    "
+                    alt="Product Image"
+                    class="product-image"
+                  />
+                  <div class="product-name">{{ item.product.name }}</div>
+                </div>
+              </td>
+              <td>{{ item.quantity }}</td>
+              <td>
+                {{ item.product.price | currency : "USD" : "symbol" : "1.0-2" }}
+              </td>
+              <td>
+                {{
+                  item.product.price * item.quantity
+                    | currency : "USD" : "symbol" : "1.0-2"
+                }}
+              </td>
+            </tr>
+          </ng-container>
+        </tbody>
+      </table>
     </div>
-    <div class="row">
-        <table>
-            <thead>
-                <tr>
-                    <th scope="col" class="text-start">Product</th>
-                    <th scope="col">Quantity</th>
-                    <th scope="col">Price</th>
-                    <th scope="col">Total Price</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>
-                        <div class="product-info">
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwvhgJA4wsFwlwNSSm23O8bfCBq7wLdq1WEQ&usqp=CAU"
-                                alt="Product Image" class="product-image">
-                            <div class="product-name">Ten san pham</div>
-                        </div>
-                    </td>
-                    <td>2</td>
-                    <td>$200</td>
-                    <td>$399</td>
-                </tr>
-                <tr>
-                    <td>
-                        <div class="product-info">
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwvhgJA4wsFwlwNSSm23O8bfCBq7wLdq1WEQ&usqp=CAU"
-                                alt="Product Image" class="product-image">
-                            <div class="product-name">Ten san pham</div>
-                        </div>
-                    </td>
-                    <td>2</td>
-                    <td>$200</td>
-                    <td>$399</td>
-                </tr>
-            </tbody>
-        </table>
+    <!-- Coupon -->
+    <div class="input-group mb3 mt-3 col-6">
+      <input
+        type="text"
+        name=""
+        id="coupon"
+        placeholder="Enter coupon"
+        class="form-control"
+        [(ngModel)]="couponCode"
+      />
+      <div class="input-group-append" style="margin-left: 10px">
+        <button
+          type="button"
+          class="btn btn-outline-secondary"
+          (click)="applyCoupon()"
+        >
+          Apply
+        </button>
+      </div>
+    </div>
 
-        <div class="text-center mt-3">
-            <button type="button" class="btn btn-gradient">Continue shopping</button>
-        </div>
+    <p class="mb-0">Totak amount: {{totalAmount | currency : "USD" : "symbol" : "1.0-2" }}</p>
+    <div class="text-center mt-3">
+      <button type="button" class="btn btn-gradient" (click)="makePayment()">
+        Make Payment
+      </button>
     </div>
+  </div>
 </div>
 <app-footer></app-footer>

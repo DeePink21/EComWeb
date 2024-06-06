@@ -1,13 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { HeaderComponent } from '../header/header.component';
 import { FooterComponent } from '../footer/footer.component';
-import { Product, ProductImage } from '../../models/product';
+import { Product } from '../../models/product';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProductService } from '../../services/product.service';
 import { CategoryService } from '../../services/category.service';
 import { env } from '../../environments/environment';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { CommonModule } from '@angular/common';
+import { CartService } from '../../services/cart.service';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-detail-product',
