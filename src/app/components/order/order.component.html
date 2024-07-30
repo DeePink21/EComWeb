@@ -1,84 +1,99 @@
 <app-header></app-header>
 <div class="container">
-    <div class="intro-section">
-        <h1>Day la trang order san pham</h1>
-        <p>Su dung Boostrap</p>
+  <div class="intro-section">
+    <h1>Day la trang order san pham</h1>
+    <p>Su dung Boostrap</p>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <h2 class="product-header">Thông tin người nhận</h2>
+
+      <!-- <form> -->
+      <div class="mb-3">
+        <label for="fullname" class="form-label">Họ và tên</label>
+        <input type="text" name="" id="fullname" class="form-control"
+        [(ngModel)]="orderData.fullname"
+        />
+      </div>
+      <div class="mb-3">
+        <label for="email" class="form-label">Email</label>
+        <input type="email" name="" id="email" class="form-control"
+        [(ngModel)]="orderData.email" placeholder="email" />
+      </div>
+      <div class="mb-3">
+        <label for="phone" class="form-label">Phone</label>
+        <input type="tel" name="" id="phone" class="form-control" />
+      </div>
+
+      <!-- </form> -->
     </div>
-    <div class="row">
-        <div class="col-md-6">
-            <h2 class="product-header">Thong tin nguoi nhan</h2>
 
-            <form>
-                <div class="mb-3">
-                    <label for="name" class="form-label">Full Name</label>
-                    <input type="text" name="" id="name" class="form-control">
-                </div>
-                <div class="mb-3">
-                    <label for="email" class="form-label">Email</label>
-                    <input type="email" name="" id="email" class="form-control">
-                </div>
-                <div class="mb-3">
-                    <label for="phone" class="form-label">Phone</label>
-                    <input type="tel" name="" id="phone" class="form-control">
-                </div>
+    <div class="col-md-6">
+      <h2 class="product-order">San pham dat hang</h2>
 
-            </form>
+      <table>
+        <thead>
+          <tr>
+            <th scope="col" class="text-start">San pham</th>
+            <th scope="col">So luong</th>
+            <th scope="col">Don gia</th>
+            <th scope="col">Tong gia</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <div class="product-info">
+                <img
+                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwvhgJA4wsFwlwNSSm23O8bfCBq7wLdq1WEQ&usqp=CAU"
+                  alt="Product Image"
+                  class="product-image"
+                />
+                <div class="product-name">Ten san pham</div>
+              </div>
+            </td>
+            <td>2</td>
+            <td>$200</td>
+            <td>$399</td>
+          </tr>
+          <tr>
+            <td>
+              <div class="product-info">
+                <img
+                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwvhgJA4wsFwlwNSSm23O8bfCBq7wLdq1WEQ&usqp=CAU"
+                  alt="Product Image"
+                  class="product-image"
+                />
+                <div class="product-name">Ten san pham</div>
+              </div>
+            </td>
+            <td>2</td>
+            <td>$200</td>
+            <td>$399</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="text-start mt-3">
+        <h4 class="header-text text-end">Tong gia: $399</h4>
+      </div>
+      <div class="mt-3">
+        <h4 class="product-header">Enter coupon</h4>
+        <div class="input-group">
+          <input
+            type="text"
+            name=""
+            id="coupon"
+            placeholder="Enter coupon"
+            class="form-control"
+          />
+          <button type="button" class="btn btn-gradient">Apply</button>
         </div>
-
-        <div class="col-md-6">
-            <h2 class="product-order">San pham dat hang</h2>
-
-            <table>
-                <thead>
-                    <tr>
-                        <th scope="col" class="text-start">San pham</th>
-                        <th scope="col">So luong</th>
-                        <th scope="col">Don gia</th>
-                        <th scope="col">Tong gia</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>
-                            <div class="product-info">
-                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwvhgJA4wsFwlwNSSm23O8bfCBq7wLdq1WEQ&usqp=CAU"
-                                    alt="Product Image" class="product-image">
-                                <div class="product-name">Ten san pham</div>
-                            </div>
-                        </td>
-                        <td>2</td>
-                        <td>$200</td>
-                        <td>$399</td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="product-info">
-                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwvhgJA4wsFwlwNSSm23O8bfCBq7wLdq1WEQ&usqp=CAU"
-                                    alt="Product Image" class="product-image">
-                                <div class="product-name">Ten san pham</div>
-                            </div>
-                        </td>
-                        <td>2</td>
-                        <td>$200</td>
-                        <td>$399</td>
-                    </tr>
-                </tbody>
-            </table>
-
-            <div class="text-start mt-3">
-                <h4 class="header-text text-end">Tong gia: $399</h4>
-            </div>
-            <div class="mt-3">
-                <h4 class="product-header">Enter coupon</h4>
-                <div class="input-group">
-                    <input type="text" name="" id="coupon" placeholder="Enter coupon" class="form-control">
-                    <button type="button" class="btn btn-gradient">Apply</button>
-                </div>
-            </div>
-            <div class="text-start mt-3">
-                <button type="button" class="btn btn-gradient">Order</button>
-            </div>
-        </div>
+      </div>
+      <div class="text-start mt-3">
+        <button type="button" class="btn btn-gradient">Order</button>
+      </div>
     </div>
+  </div>
 </div>
 <app-footer></app-footer>
