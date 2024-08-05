@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ProductService } from './product.service';
-import { LocalStorageService } from 'ngx-webstorage';
+import {LocalStorageService, SessionStorageService} from 'ngx-webstorage';
 
 @Injectable({ providedIn: 'root' })
 export class CartService {
