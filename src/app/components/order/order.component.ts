@@ -7,13 +7,15 @@ import { Router } from 'express';
 import { CartService } from '../../services/cart.service';
 import { ProductService } from '../../services/product.service';
 import { OrderService } from '../../services/order.service';
+import { FormsModule } from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
 
 @Component({
     selector: 'app-order',
     standalone: true,
     templateUrl: './order.component.html',
     styleUrl: './order.component.scss',
-    imports: [HeaderComponent, FooterComponent]
+    imports: [HeaderComponent, FooterComponent,BrowserModule, FormsModule ]
 })
 export class OrderComponent {
 cartItems: { product: Product, quanlity: number}[] = [];

@@ -48,7 +48,7 @@
       </table>
     </div>
     <!-- Coupon -->
-    <div class="input-group mb3 mt-3 col-6">
+    <div class="input-group mb3 mt-3">
       <input
         type="text"
         name=""
@@ -68,7 +68,7 @@
       </div>
     </div>
 
-    <p class="mb-0">Totak amount: {{totalAmount | currency : "USD" : "symbol" : "1.0-2" }}</p>
+    <p class="mb-0">Total amount: {{totalAmount | currency : "USD" : "symbol" : "1.0-2" }}</p>
     <div class="text-center mt-3">
       <button type="button" class="btn btn-gradient" (click)="makePayment()">
         Make Payment
